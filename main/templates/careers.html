@@ -1,0 +1,35 @@
+{% extends 'index.html' %}
+
+{% block title %}
+    Career
+{% endblock %}
+
+{% block content %}
+    <style>
+       .card{
+            margin-top: 5em;
+            margin-left: 8em;
+            margin-right: 8em;
+            border: 2em solid black;
+            margin-bottom: 5em;            
+        }
+        .bd-placeholder-img{
+            background-image: url("{{ url_for('see', filename=career.img_name) }}");
+            background-size: cover;
+        }
+    </style>
+
+        <div id="sigle-career" class="card shadow-sm">
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false" style="background-size: cover; ">
+            </svg>
+            <div class="card-body">
+              <p class="card-text"><strong>{{ career.career_name }}</strong> </p>
+              <p class="card-text">{{ career.content }}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <a type="button" class="btn btn-sm btn-outline-primary" href="{{ url_for('careers')}}">Back to careers</a>
+                </div>
+              </div>
+            </div>
+        </div> 
+{% endblock %}

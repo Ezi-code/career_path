@@ -1,0 +1,90 @@
+
+.bd-placeholder-img1, .bd-placeholder-img2, .bd-placeholder-img3 {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    background-repeat: no-repeat;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    background-size: cover;
+  }
+.bd-placeholder-img1{
+    background-image: url("/static/images/image1.jpg");
+}
+  .bd-placeholder-img2 {
+    background-image: url("/static/images/image2.jpeg");
+    
+  }
+
+  /* #description{
+    color: rgb(0, 88, 170);
+  }
+   */
+  .bd-placeholder-img3 {
+    
+    background-image: url("/static/images/image3.jpg");
+  }
+
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
+  .overlay-image{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.5;
+  }
+  .container-marketing{
+    padding-top: 2em;
+    padding-left: 5em;
+    padding-right: 5em;
+  }
+
+  .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
+
+  #navel:hover{
+    background-color: rgb(36, 138, 255);
+    color: white;
+    padding: 1em;
+    font-weight: 10px;
+    border-radius: 3em;
+  }
+  #adminel:hover{
+    background-color: rgb(255, 74, 74);
+    color: white;
+    padding: 1em;
+    font-weight: 10px;
+    border-radius: 3em;
+  }
+
+  #boldtext{
+    background-color: orange; 
+    color: white;
+    border-radius: 3em; 
+    padding-left: 2em; 
+    padding-right: 2em;
+  }
+  #boldtext:hover{
+    background-color: rgb(255, 192, 33);
+    color: white;
+    padding: 1em;
+    font-weight: 10px;
+    border-radius: 3em;
+  }

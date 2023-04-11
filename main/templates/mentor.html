@@ -1,0 +1,35 @@
+{% extends 'index.html' %}
+
+{% block title %}
+    Get Mentorship
+{% endblock %}
+
+
+
+{% block content %}
+<style>
+    .form-content{
+        margin-top: 100px;
+        flex-wrap: wrap;
+        margin-left: 500px;
+        margin-right: 500px;
+        margin-bottom: 3em;
+    }
+</style>
+
+
+    <div class="form-content">
+        <h4>Fill the form below to request the assistance of a mentor</h4> <br>
+        <form action="{{ url_for('mentor') }}" method="post">
+            <input name="first_name" class="form-control" required="true" autofocus type="text" placeholder="First Name"> <br>
+            <input name="last_name" class="form-control" required="true" type="text" placeholder="Last Name"> <br>
+            <input name="email" class="form-control" required="true" type="email" placeholder="Email"> <br>
+            <input name="phone" class="form-control" required="true" type="text" placeholder="Phone Number"> <br>
+            <input name="career_choice" class="form-control" required="true" type="text" placeholder="Career of choice"> <br>
+            <textarea name="reason" class="form-control" required="true" name="reason" id="reason-el" cols="20" rows="10" placeholder="why go you need a mentor?"></textarea> <br>
+            <input type="checkbox" required="true"> Our Mentorship services may be free of charge or attract some fee depending on the arrangement between the mentor and mentee.
+            <br><br>
+            <button class="btn btn-primary btn-block btn-lg">Submit Form</button>
+        </form>
+    </div>
+{% endblock %}

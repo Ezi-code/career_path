@@ -1,0 +1,65 @@
+{% extends 'index.html' %}
+ 
+  {% block title %}
+    Home Page 
+  {% endblock %}
+
+  {% block content %}
+  
+
+  <link href="{{ url_for('static', filename='/css/carousel.css') }}" rel="stylesheet">
+<body>
+  
+<main>
+
+<div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <!-- <div class="overlay-image" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS915Jp6bE5k05R88BW4arD-2JyKUjT3edN1hHWYQMRk4Tqu4B3tbesbu6MTAyv90GoCFA&usqp=CAU);"></div> -->
+    <div class="carousel-item active">
+      <svg class="bd-placeholder-img1" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"></svg>
+
+      <div class="container">
+        <div class="carousel-caption text-start">
+          <h1>Explore career paths that suit your skills and abilities</h1>
+          <p><a class="btn btn-lg btn-primary" href="{{ url_for('careers') }}">Explore Careers</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <svg class="bd-placeholder-img2" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"></svg>
+
+      <div class="container">
+        <div class="carousel-caption">
+          <h1>Get a walkthrough with our mentorship program</h1>
+          <p><a class="btn btn-lg btn-primary" href="{{ url_for('mentor') }}">Get Mentorship</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <svg class="bd-placeholder-img3" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"></svg>
+
+      <div class="container">
+        <div class="carousel-caption text-end">
+          <h1 id="description">Get detailed insight on careers in Tech...</h1>
+          <p><a class="btn btn-lg btn-primary" href="{{ url_for('careers') }}">Get Started</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+</main>
+  {% endblock %}

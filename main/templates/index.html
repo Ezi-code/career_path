@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.84.0">
+    
+    <title>
+      {% block title %}
+      
+      {% endblock %}
+    </title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/carousel/">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/styles.css')}}">
+  </head>
+<header>
+  <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" id="boldtext" href="{{ url_for('home')}}">Career Path Help Desk</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item">
+            <a class="nav-link" id="navel" aria-current="page" href="{{ url_for('home') }}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="navel" href="{{url_for('careers') }}">Careers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="navel" href="{{ url_for('mentor') }}" tabindex="-1" aria-disabled="true">Get Mentorship</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" id="navel" href="{{ url_for('about') }}" tabindex="-1" aria-disabled="true">About Us</a>
+          </li>
+          {% if current_user.username == 'Admin' %}
+          <li class="nav-item">
+            <a class="nav-link" id="adminel" href="{{ url_for('admin') }}" tabindex="-1" aria-disabled="true">Admin Panel</a>
+          </li>
+          {% endif %}
+        </ul>
+       
+      </div>
+    </div>
+  </nav>
+  
+</header>
+<body>
+ 
+  {% block content %}
+
+  {% endblock %}
+    <!-- Bootstrap core CSS -->
+<link href="{{ url_for('static', filename='/css/bootstrap.min.css') }}" rel="stylesheet"/>
+
+<script src="{{ url_for('static', filename='/js/bootstrap.bundle.min.js') }}"></script>
+
+      
+  </body>
+</html>

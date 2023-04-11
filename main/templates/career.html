@@ -1,0 +1,37 @@
+{% extends 'index.html'%}
+
+{% block title %}
+    Careers
+{% endblock %}
+
+{% block content %}
+
+
+<div class="album py-5 bg-light" style="margin-top: 10px;">
+  <div class="container">
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      {% for career in careers %}
+      <div class="col">
+        <div class="card shadow-sm">
+          <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false" style="background-size: cover; background-image: url('{{ url_for('see', filename=career.img_name) }}')">
+          </svg>
+
+          <div class="card-body">
+            <p class="card-text"><strong>{{ career.career_name }}</strong> </p>
+            <p class="card-text">{{ career.description }}</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <a type="button" class="btn btn-sm btn-outline-primary" href="{{ url_for('career', id=career.id)}}">Learn more</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
