@@ -1,9 +1,9 @@
-vscode/
+.vscode/
 instance/
 /__pycache__/
 Scripts/
 var/
 instance/
-pyenv.cfg
-settings.json
-Lib/
+./pyenv.cfg
+./settings.json
+/Lib/

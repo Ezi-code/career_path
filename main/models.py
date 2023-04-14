@@ -24,7 +24,7 @@ class Mentorship(db.Model):
 # this model holds the details of a career path 
 class Career(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
-    career_name = db.Column(db.String(), nullable=False)
+    career_name = db.Column(db.String(), unique=True, nullable=False)
     description = db.Column(db.String(), nullable=False)
     content = db.Column(db.String(), nullable=False)
     img = db.Column(db.Text(), nullable=False)

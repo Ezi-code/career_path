@@ -1,6 +1,6 @@
 from flask_login import login_user, login_required
 from main import app, db
-from flask import render_template, url_for, request, redirect, Response
+from flask import jsonify, render_template, url_for, request, redirect, Response
 from main.models import Mentorship,AdminUser, Career
 from werkzeug.utils import secure_filename
 
@@ -43,15 +43,18 @@ def career(id):
 # this route provides a form for mentorship application 
 @app.route('/mentor', methods=["POST", "GET"])
 def mentor():
-    applicant = Mentorship()
     if request.method == "POST":
-        applicant.first_name = request.form.get('first_name')
-        applicant.last_name = request.form.get('last_name')
-        applicant.email = request.form.get('email')
-        applicant.phone_number = request.form.get('phone')
-        applicant.reason = request.form.get('reason')
-        applicant.career_choice = request.form.get('career_choice')
-        print(applicant.first_name)
+        first_name = request.form.get('first_name')
+        last_name = request.form.get('last_name')
+        email = request.form.get('email')
+        phone_number = request.form.get('phone')
+        reason = request.form.get('reason')
+        career_choice = request.form.get('career_choice')
+
+        mentee = Mentorship(first_name=first_name, last_name=last_name, email=email, phone_number=phone_number, reason=reason, career_choice=career_choice)
+        
+        db.session.add(mentee)
+        db.session.commit()
 
         return redirect(url_for('careers'))
     
@@ -66,7 +69,7 @@ def about():
 
 #admin home page
 @app.route('/admin', methods=["GET","POST"])
-# @login_required
+@login_required
 def admin():
     careers = Career.query.all()
     return render_template("admin_home.html", careers=careers)
@@ -86,6 +89,7 @@ def admin_login():
 
 # the admin adds new career path sto the database through this route 
 @app.route('/admin/upload', methods=["GET", "POST"])
+@login_required
 def upload():
     if request.method == "POST":
         # Get datails from the add career form 
@@ -105,7 +109,7 @@ def upload():
         # if items are added successfully, the admin will be redirected
         #  to the admin home to see all the available careers
         # for verification  
-        return redirect(url_for('careers'))
+        return redirect(url_for('admin'))
 
     return render_template("fileUpload.html")
 
@@ -113,6 +117,7 @@ def upload():
 
 # this route is responsible for deleting a career path from the database base on selected ID
 @app.route('/admin/delete/<int:id>')
+@login_required
 def delete_career(id):
     career_to_delete = Career.query.get_or_404(id)
     try:
@@ -129,6 +134,7 @@ def delete_career(id):
 
 # this route controls editing of an existing career and updating changes in the database 
 @app.route('/admin/edit/<int:id>', methods=["POST", "GET"])
+@login_required
 def edit_career(id):
     # career = Career.query.get_or_404(id)
     # try:
@@ -150,3 +156,9 @@ def edit_career(id):
     # pic.mimetype = career.mimetype    
     
     return render_template("admin_edit.html", )
+
+
+@app.route('/admin/applicants')
+@login_required
+def applicants():
+    return "Applicants will be listed here soon"

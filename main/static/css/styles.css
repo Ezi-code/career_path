@@ -16,10 +16,6 @@
     
   }
 
-  /* #description{
-    color: rgb(0, 88, 170);
-  }
-   */
   .bd-placeholder-img3 {
     
     background-image: url("/static/images/image3.jpg");
@@ -47,6 +43,7 @@
 
   .bd-placeholder-img {
     font-size: 1.125rem;
+    background-position: center;
     text-anchor: middle;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -62,29 +59,32 @@
   #navel:hover{
     background-color: rgb(36, 138, 255);
     color: white;
-    padding: 1em;
+    padding-right: 1em;
+    padding-left: 1em;
     font-weight: 10px;
-    border-radius: 3em;
+    border-radius: 4rem;
   }
   #adminel:hover{
     background-color: rgb(255, 74, 74);
     color: white;
-    padding: 1em;
+    padding-left: 1rem;
+    padding-right: 1rem;
     font-weight: 10px;
-    border-radius: 3em;
+    border-radius: 4rem;
   }
 
   #boldtext{
     background-color: orange; 
     color: white;
-    border-radius: 3em; 
-    padding-left: 2em; 
-    padding-right: 2em;
+    border-radius: 3rem; 
+    padding-left: 2rem; 
+    padding-right: 2rem;
   }
   #boldtext:hover{
-    background-color: rgb(255, 192, 33);
+    background-color: rgb(226, 73, 195);
     color: white;
-    padding: 1em;
+    padding-left: 1rem;
+    padding-right: 1rem;
     font-weight: 10px;
-    border-radius: 3em;
+    border-radius: 3rem;
   }

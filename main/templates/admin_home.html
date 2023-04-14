@@ -6,6 +6,28 @@
 
 {% block content %}
 
+<style>
+  /* .mini-bar{
+    padding-top: 5rem;
+  }
+  a{
+    margin-left: 2rem;
+  }
+  #app{
+    color: white;
+    
+  } */
+</style>
+
+
+
+<section class="mini-bar">
+  <a class="btn btn-primary" href="{{ url_for('upload') }}">Add</a>
+  <a id="app" class="btn btn-info" href="{{ url_for('applicants') }}">Applicants</a>
+</section>
+
+
+<hr>
 <div class="album py-5 bg-light" style="margin-top: 10px;">
     <div class="container">
      
@@ -33,5 +55,5 @@
     </div>
   </div>
   <hr>
-  <a href="{{ url_for('upload') }}">Add</a>
+  
 {% endblock %}
