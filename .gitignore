@@ -1,8 +1,8 @@
-.vscode/
-instance/
+/.vscode/
+/instance/
 /__pycache__/
-Scripts/
-var/
+/Scripts/
+/var/
 instance/
 ./pyenv.cfg
 ./settings.json

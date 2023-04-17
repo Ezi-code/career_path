@@ -1,15 +1,16 @@
-from flask_login import login_user, login_required
+from flask_login import login_user, login_required, logout_user
 from main import app, db
 from flask import jsonify, render_template, url_for, request, redirect, Response
 from main.models import Mentorship,AdminUser, Career
 from werkzeug.utils import secure_filename
+from main.forms import EditForm
 
-
-# Create the database on run
+# Create the database on run time to avoid errors 
 with app.app_context():
     db.create_all()
 
-# Home page route 
+
+# Home page route that renders the home page 
 @app.route('/')
 def home():
     return render_template("home.html")
@@ -87,6 +88,12 @@ def admin_login():
     return render_template("admin_login.html")
 
 
+
+@app.route('/admin/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('careers'))
+
 # the admin adds new career path sto the database through this route 
 @app.route('/admin/upload', methods=["GET", "POST"])
 @login_required
@@ -136,29 +143,32 @@ def delete_career(id):
 @app.route('/admin/edit/<int:id>', methods=["POST", "GET"])
 @login_required
 def edit_career(id):
-    # career = Career.query.get_or_404(id)
-    # try:
-    #     career.career_name = request.form.get('career_name')
-    #     career.description = request.form.get('description')
-    #     career.content = request.form.get('content')
-    #     pic = request.files['file']
-    #     filename = pic.filename
-    #     mimetype = pic.mimetype
-    # except Exception as e:
-    #     return f"An error {e} occurred! "
+    career = Career.query.get_or_404(id)
+    form = EditForm()
+    if form.validate_on_submit():
+        career.career_name = form.career_name.data
+        career.description = form.description.data
+        career.content = form.content.data
+        pic = form.image.data
+        if pic:
+            career.img = pic.read()
+            career.img_name = secure_filename(pic.filename)
+            career.mimetype = pic.mimetype
+             
+        db.session.add(career)
+        db.session.commit()
+        # flask("career Updated Successfully", category='success')
+        return redirect(url_for('admin'))
+
+    form.career_name.data = career.career_name
+    form.description.data = career.description
+    form.content.data = career.content 
     
-    # request.form.values('career_name') = career.career_name
-    # request.form.values('description') = career.description
-    # request.form.get('content') = career.content
-    # request.files('file') = pic
-    # pic.img = career.img
-    # pic.filename = career.img_name
-    # pic.mimetype = career.mimetype    
-    
-    return render_template("admin_edit.html", )
+    return render_template("admin_edit.html", form=form)
 
 
 @app.route('/admin/applicants')
 @login_required
 def applicants():
-    return "Applicants will be listed here soon"
+    mentees = Mentorship.query.all()
+    return render_template("applicants.html", mentees=mentees)

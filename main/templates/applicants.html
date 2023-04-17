@@ -1,0 +1,32 @@
+{% extends "index.html" %}
+
+{% block title %}
+    Applicants 
+{% endblock %}
+
+
+{% block content %}
+
+ 
+    <div class="album py-5 bg-light" style="margin-top: 4rem;">
+        <div class="container">
+    
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            {% for mentee in mentees|reverse %}
+            <div class="col">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <p class="card-text"><strong>Name: </strong>{{ mentee.first_name }} {{ mentee.last_name}}  ||  <strong>Email:</strong> <i>{{mentee.email}}</i></p>
+                    <p class="card-text"><strong>Career of choice: </strong>{{ mentee.career_choice }}</p>
+                    <p class="card-text">{{ mentee.reason }}</p>
+               
+                </div>
+            </div>
+            </div>
+            {% endfor %}
+    
+        </div>
+        </div>
+    </div>
+  
+{% endblock %}

@@ -1,3 +1,4 @@
+
 {% extends "index.html" %}
 
 {% block title %}
@@ -7,18 +8,24 @@
 
 {% block content %}
     <style>
-        #upload-form{
+        #edit-form{
             padding-top: 5em;
             padding-left: 10em;
             padding-right: 10em;
         }
     </style>
 
-    <form id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
-        <input class="form-control" placeholder="Name of career" type="text" name="career_name"> <br>
-        <input class="form-control" placeholder="Brief description" type="text" name="description"> <br>
-        <input class="form-control" type="file" name="file">    <br>
-        <textarea class="form-control" name="content" cols="30" rows="10" placeholder="Full description of the career"></textarea> <br>
-        <input class="btn btn-primary btn-lg" type="submit" value="Save">
+    <form id="edit-form" method="POST" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+
+        {{ form.career_name(class="form-control") }} <br>
+        {{ form.description(class="form-control") }} <br>
+        {{ form.image(class="form-control") }} <br>
+        {{ form.content(class="form-control") }}
+        
+        <br>
+        {{ form.submit(class="btn btn-primary btn-lg")}}
     </form>
+    {{ ckeditor.load('full') }}
+    {{ ckeditor.config(name='blogcontent')}}
 {% endblock %}

@@ -7,7 +7,7 @@
 {% block content %}
 
 <style>
-  /* .mini-bar{
+  .mini-bar{
     padding-top: 5rem;
   }
   a{
@@ -16,12 +16,13 @@
   #app{
     color: white;
     
-  } */
+  }
 </style>
 
 
 
 <section class="mini-bar">
+  <a class="btn btn-danger" href="{{ url_for('logout') }}">Logout</a>
   <a class="btn btn-primary" href="{{ url_for('upload') }}">Add</a>
   <a id="app" class="btn btn-info" href="{{ url_for('applicants') }}">Applicants</a>
 </section>

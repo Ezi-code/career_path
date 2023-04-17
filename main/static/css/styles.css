@@ -61,7 +61,7 @@
     color: white;
     padding-right: 1em;
     padding-left: 1em;
-    font-weight: 10px;
+    font-weight: 3rem;
     border-radius: 4rem;
   }
   #adminel:hover{
@@ -69,7 +69,7 @@
     color: white;
     padding-left: 1rem;
     padding-right: 1rem;
-    font-weight: 10px;
+    font-weight: 3rem;
     border-radius: 4rem;
   }
 
@@ -85,6 +85,6 @@
     color: white;
     padding-left: 1rem;
     padding-right: 1rem;
-    font-weight: 10px;
+    font-weight: 3rem;
     border-radius: 3rem;
   }
