@@ -12,3 +12,4 @@ MarkupSafe==2.1.2
 SQLAlchemy==2.0.9
 typing_extensions==4.5.0
 Werkzeug==2.2.3
+Flask-CKEditor==0.4.6
