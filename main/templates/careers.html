@@ -24,7 +24,7 @@
             </svg>
             <div class="card-body">
               <p class="card-text"><strong>{{ career.career_name }}</strong> </p>
-              <p class="card-text">{{ career.content }}</p>
+              <p class="card-text">{{ career.content|safe }}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <a type="button" class="btn btn-sm btn-outline-primary" href="{{ url_for('careers')}}">Back to careers</a>

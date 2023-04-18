@@ -1,7 +1,6 @@
 /.vscode/
-/instance/
-/__pycache__/
-/Scripts/
+/main/__pycache__/
+Scripts/
 /var/
 instance/
 ./pyenv.cfg
