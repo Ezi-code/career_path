@@ -52,7 +52,30 @@
   
 </header>
 <body>
- 
+  {% with messages = get_flashed_messages(with_categories=true)%}
+    {% if messages %}
+        {% for category,message in messages %}
+            <div class="alert alert-{{ category }}" style="margin-top: 3.5rem;">
+                <button type="button" class="m1-2 mb-1 close" data-dismiss="alert" aria-label="close">
+                    <span aria-hidden="true">&times;</span>
+
+                </button>
+                {{ message }}
+            </div>           
+        {% endfor %}
+    {% endif %}
+  {% endwith %}
+
+  <script>
+    // Hide the flash messages after 5 seconds
+    setTimeout(function() {
+        var messages = document.getElementsByClassName("alert");
+        for (var i = 0; i < messages.length; i++) {
+            messages[i].style.display = "none";
+        }
+    }, 5000);
+</script>
+  
   {% block content %}
 
   {% endblock %}

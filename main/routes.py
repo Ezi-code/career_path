@@ -1,6 +1,6 @@
 from flask_login import login_user, login_required, logout_user
 from main import app, db
-from flask import jsonify, render_template, url_for, request, redirect, Response
+from flask import render_template, url_for, request, redirect, Response, flash
 from main.models import Mentorship,AdminUser, Career
 from werkzeug.utils import secure_filename
 from main.forms import EditForm
@@ -83,6 +83,7 @@ def admin_login():
         attempted_user = AdminUser.query.filter_by(username=request.form.get('username')).first()
         if attempted_user and attempted_user.check_password_correction(attempted_password=request.form.get('password')):
             login_user(attempted_user)
+            flash('You have successfully logged in', category='success')
             return redirect(url_for('admin'))
             # return redirect(url_for('admin'))
     return render_template("admin_login.html")
@@ -92,6 +93,7 @@ def admin_login():
 @app.route('/admin/logout')
 def logout():
     logout_user()
+    flash('You have successfully logged out', category='info')
     return redirect(url_for('careers'))
 
 # the admin adds new career path sto the database through this route 
@@ -131,6 +133,7 @@ def delete_career(id):
         db.session.delete(career_to_delete)
         db.session.commit()
         careers = Career.query.all()
+        flash('Career deleted successfully', category='danger')
         return render_template('admin_home.html', careers=careers)
 
     except ValueError:
@@ -157,6 +160,7 @@ def edit_career(id):
              
         db.session.add(career)
         db.session.commit()
+        flash('Career updated successfully', category='success')
         # flask("career Updated Successfully", category='success')
         return redirect(url_for('admin'))
 
